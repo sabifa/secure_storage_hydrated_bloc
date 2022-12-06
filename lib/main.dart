@@ -1,6 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:hydrated_bloc/hydrated_bloc.dart';
 
-void main() {
+import 'secure_hydrated_storage.dart';
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  final secureHydratedStorage = SecureHydratedStorage();
+  await secureHydratedStorage.initialize();
+
+  HydratedBloc.storage = secureHydratedStorage;
+
   runApp(const MyApp());
 }
 
